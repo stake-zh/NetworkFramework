@@ -2,6 +2,7 @@ package com.stake.networkframework;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.stake.networkframework.net.RetroAdapter;
 
@@ -13,10 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RetroAdapter.getService().uploadInfo("")
+        RetroAdapter.getService().getInfo("")
                 .subscribeOn(Schedulers.io())
                 .subscribe(it->{
-
-                });
+                    Log.d("msg-log", it);
+                },Throwable::printStackTrace);
     }
 }
